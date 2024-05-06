@@ -183,15 +183,22 @@ class ShowAttendance extends StatelessWidget {
   }
 
   void _modalBottomSheetForFilters(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    var width = MediaQuery
+        .of(context)
+        .size
+        .width;
     showModalBottomSheet(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
         context: context,
         builder: (builder) {
-          return Obx(() => SingleChildScrollView(
+          return Obx(() =>
+              SingleChildScrollView(
                 child: Container(
                     height: height * 0.66,
                     padding: const EdgeInsets.all(2.5),
@@ -226,7 +233,8 @@ class ShowAttendance extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(
                               _teacherController.deptClasses.length,
-                              (index) => Row(
+                                  (index) =>
+                                  Row(
                                     children: [
                                       Text(_teacherController
                                           .deptClasses[index].className
@@ -235,23 +243,23 @@ class ShowAttendance extends StatelessWidget {
                                           activeColor: Colors.indigoAccent,
                                           value: index,
                                           groupValue:
-                                              _attendanceFilterController
-                                                  .classRadioButtonVal.value,
+                                          _attendanceFilterController
+                                              .classRadioButtonVal.value,
                                           onChanged: (int? val) async {
                                             _attendanceFilterController
                                                 .classRadioButtonVal(val);
                                             await _attendanceFilterController
                                                 .getSubjectsByClass(
-                                                    _teacherController
-                                                        .deptClasses[index]
-                                                        .className
-                                                        .toString());
+                                                _teacherController
+                                                    .deptClasses[index]
+                                                    .className
+                                                    .toString());
                                             _attendanceFilterController
                                                 .selectedClassName(
-                                                    _teacherController
-                                                        .deptClasses[index]
-                                                        .className
-                                                        .toString());
+                                                _teacherController
+                                                    .deptClasses[index]
+                                                    .className
+                                                    .toString());
                                           }),
                                       const SizedBox(width: 14)
                                     ],
@@ -265,7 +273,8 @@ class ShowAttendance extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(
                               _teacherController.divisions.length,
-                              (index) => Row(
+                                  (index) =>
+                                  Row(
                                     children: [
                                       Text(_teacherController
                                           .divisions[index].divisionName
@@ -274,17 +283,17 @@ class ShowAttendance extends StatelessWidget {
                                           activeColor: Colors.indigoAccent,
                                           value: index,
                                           groupValue:
-                                              _attendanceFilterController
-                                                  .divRadioButtonVal.value,
+                                          _attendanceFilterController
+                                              .divRadioButtonVal.value,
                                           onChanged: (int? val) {
                                             _attendanceFilterController
                                                 .divRadioButtonVal(val);
                                             _attendanceFilterController
                                                 .selectedDivision(
-                                                    _teacherController
-                                                        .divisions[index]
-                                                        .divisionName
-                                                        .toString());
+                                                _teacherController
+                                                    .divisions[index]
+                                                    .divisionName
+                                                    .toString());
                                           }),
                                       const SizedBox(width: 14)
                                     ],
@@ -316,28 +325,28 @@ class ShowAttendance extends StatelessWidget {
                               child: Center(
                                 child: DropdownButton<sub.Subject>(
                                   hint: _attendanceFilterController
-                                          .selectedSub.value.isEmpty
+                                      .selectedSub.value.isEmpty
                                       ? const Text('select subject',
-                                          style: TextStyle(fontSize: 12))
+                                      style: TextStyle(fontSize: 12))
                                       : Text(
-                                          _attendanceFilterController
-                                              .selectedSub.value
-                                              .toString(),
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black)),
+                                      _attendanceFilterController
+                                          .selectedSub.value
+                                          .toString(),
+                                      style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
                                   items: _attendanceFilterController
-                                          .subjectsByclass.isEmpty
+                                      .subjectsByclass.isEmpty
                                       ? null
                                       : _attendanceFilterController
-                                          .subjectsByclass
-                                          .map((sub.Subject value) {
-                                          return DropdownMenuItem<sub.Subject>(
-                                            value: value,
-                                            child: Text(value.name.toString()),
-                                          );
-                                        }).toList(),
+                                      .subjectsByclass
+                                      .map((sub.Subject value) {
+                                    return DropdownMenuItem<sub.Subject>(
+                                      value: value,
+                                      child: Text(value.name.toString()),
+                                    );
+                                  }).toList(),
                                   onChanged: (subject) async {
                                     _attendanceFilterController
                                         .selectedSub(subject!.name.toString());
@@ -370,30 +379,30 @@ class ShowAttendance extends StatelessWidget {
                               child: Center(
                                 child: DropdownButton<PracticalBatch>(
                                   hint: _attendanceFilterController
-                                          .selectedBatch.value.isEmpty
+                                      .selectedBatch.value.isEmpty
                                       ? const Text('select batch',
-                                          style: TextStyle(fontSize: 12))
+                                      style: TextStyle(fontSize: 12))
                                       : Text(
-                                          _attendanceFilterController
-                                              .selectedBatch.value
-                                              .toString(),
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black)),
+                                      _attendanceFilterController
+                                          .selectedBatch.value
+                                          .toString(),
+                                      style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
                                   items: _attendanceFilterController
-                                          .practicalBatch.isEmpty
+                                      .practicalBatch.isEmpty
                                       ? null
                                       : _attendanceFilterController
-                                          .practicalBatch
-                                          .map((PracticalBatch value) {
-                                          return DropdownMenuItem<
-                                              PracticalBatch>(
-                                            value: value,
-                                            child: Text(
-                                                value.batchName.toString()),
-                                          );
-                                        }).toList(),
+                                      .practicalBatch
+                                      .map((PracticalBatch value) {
+                                    return DropdownMenuItem<
+                                        PracticalBatch>(
+                                      value: value,
+                                      child: Text(
+                                          value.batchName.toString()),
+                                    );
+                                  }).toList(),
                                   onChanged: (batch) {
                                     _attendanceFilterController.selectedBatch(
                                         batch!.batchName.toString());

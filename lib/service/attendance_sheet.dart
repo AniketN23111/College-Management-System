@@ -3,7 +3,7 @@ import 'package:gsheets/gsheets.dart';
 import 'package:instattendance/controller/teacher_controller.dart';
 
 class AttendanceSheet {
-  static final TeacherController _teacherController = Get.find();
+  /*static final TeacherController _teacherController = Get.find();
   static const _spreadsheetIdBE =
       '1rAxIE-wvA5BakT2-8XvedjF3LpOv5FOQTRXN7nBb0oU';
   static const _spreadsheetIdTE =
@@ -21,7 +21,7 @@ class AttendanceSheet {
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/instattendance%40instattendance.iam.gserviceaccount.com"
-}''';
+}''';*/
 
   //to access spreadsheet
   static final _gsheets = GSheets(_credentials);
